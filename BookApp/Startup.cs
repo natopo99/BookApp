@@ -27,6 +27,10 @@ namespace BookApp
         {
             services.AddControllersWithViews();
             services.AddScoped<IBookAppRepository, EFBookAppRepository>();
+            services.AddRazorPages(); // this allows us to work with razor pages
+
+            services.AddDistributedMemoryCache(); // this creates a session so that the cart doesnt get reset
+            services.AddSession();
             services.AddDbContext<BookstoreContext>(options =>
 
                 options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]));
@@ -50,7 +54,7 @@ namespace BookApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession(); // this creates a session so the items in the cart dont get lost when changing the page 
             app.UseRouting();
 
             app.UseAuthorization();
@@ -58,8 +62,27 @@ namespace BookApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "categoryPage",
+                    pattern: "{category}/Page{pageNum}", // Change how the URL is shown on the search pn bar when you go to different pages
+                    defaults: new { controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "{pageNum}", // Change how the URL is shown on the search pn bar when you go to different pages
+                    defaults: new { controller = "Home", action = "Index" , pageNum = 1});
+
+                endpoints.MapControllerRoute(
+                    name: "category",
+                    pattern: "{category}", // Change how the URL is shown on the search pn bar when you go to different pages
+                    defaults: new { controller = "Home", action = "Index", pageNum = 1});
+
+
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
             });
         }
     }

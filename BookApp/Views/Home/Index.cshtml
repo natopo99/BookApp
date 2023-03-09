@@ -7,22 +7,13 @@
 
 @model BooksViewModel
 
-@foreach (Book b in Model.Books)
-            {
-                <h3>@b.Title</h3>
-                <ul>
-                    <li>Author: @b.Author</li>
-                    <li>Publisher: @b.Publisher</li>
-                    <li>Price: $@b.Price</li>
-                    <li>ISBN: @b.ISBN</li>
-                    <li>Category: @b.Category</li>
-                    <li>Classification: @b.Classification</li>
-                    <li>Page Count: @b.PageCount</li> 
-                </ul>
+@foreach (Book b in Model.Books){
+            <partial name="BookSummary" model="b"/>
             }
 
 
 
+@*this div adds bootstrap to the page buttons*@ 
 
 <div page-pal="@Model.PageInfo" page-action="Index" page-classes-enabled="true"
      page-class="btn" page-class-normal="btn-outline-dark"

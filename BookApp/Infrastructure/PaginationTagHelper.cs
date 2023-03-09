@@ -41,7 +41,7 @@ namespace BookApp.Models.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i <= PagePal.TotalPages; i++)
+            for (int i = 1; i <= PagePal.TotalPages; i++) //needs to be <= in order to include all 15 books
             {
                 TagBuilder tb = new TagBuilder("a");
 

@@ -21,20 +21,21 @@ namespace BookApp.Controllers
 
 
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
-            int pageSize = 10;
+            int pageSize = 10; //specify the page size 
 
             var bvm = new BooksViewModel
             {
                 Books = repo.Books
+                .Where(c => c.Category == category || category == null )
                 .OrderBy(b => b.Title)
-                .Skip((pageNum - 1) * pageSize)
+                .Skip((pageNum - 1) * pageSize) // these run like SQL
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks = (category == null ? repo.Books.Count() : repo.Books.Where(bvm => bvm.Category == category).Count()) , // get total number of books
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
 

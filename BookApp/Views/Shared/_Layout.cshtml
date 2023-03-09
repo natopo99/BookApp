@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
+    <header> @*adding bootstrap styles to the layout page*@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookApp</a>
+                <a class="navbar-brand m-lg-2" asp-area="" asp-controller="Home" asp-action="Index">BookApp</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,12 +27,31 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <div class="row m-1 p-1">
+        <div id="types" class="col-3">
+            <vc:category>
 
+            </vc:category>
+        </div>
+
+
+
+        <div class="col-9">
+            <div>
+                @RenderBody()
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- 16:9 -->
+                    
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=E4p8JkI9lV8"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <footer class="border-top footer text-muted">
         <center><a href="https://www.churchofjesuschrist.org/study/scriptures/the-living-christ-the-testimony-of-the-apostles/the-living-christ-the-testimony-of-the-apostles?lang=eng">Good Link </a></center>
     </footer>
