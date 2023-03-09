@@ -3,11 +3,11 @@
 }
 @model Book
 
-<div class="card card-outline-primary m-1 p-1">
-    <div class="bg-light p-1">
+<div class="card card-outline-primary m-1 p-1 bg-info "> @*Changed the background for the card in the Book Summary also changed the font for the Book title to Italic*@ 
+    <div class="bg-light p-1 font-italic">
         <h4>@Model.Title</h4>
 
-        <span class="badge bg-info" style="float:right">
+        <span class="badge bg-danger text-white" style="float:right">
             @Model.PageCount Pages
         </span>
     </div>
@@ -21,14 +21,14 @@
         <li>Page Count: @Model.PageCount</li>
     </ul>
 
-
     <form method="post" asp-page="/Cart">
         <input type="hidden" asp-for="@Model.BookID" />
 
-        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
 
-            <span class="card-text">
-                <button type="submit" class="btn btn-success btn-sm float-end" >Add to Cart</button>
-            </span>
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">Add to Cart</button>
+        </span>
     </form>
+
 </div>

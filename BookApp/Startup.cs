@@ -68,7 +68,7 @@ namespace BookApp
 
                 endpoints.MapControllerRoute(
                     name: "Paging",
-                    pattern: "{pageNum}", // Change how the URL is shown on the search pn bar when you go to different pages
+                    pattern: "Page{pageNum}", // Change how the URL is shown on the search pn bar when you go to different pages
                     defaults: new { controller = "Home", action = "Index" , pageNum = 1});
 
                 endpoints.MapControllerRoute(
@@ -76,13 +76,9 @@ namespace BookApp
                     pattern: "{category}", // Change how the URL is shown on the search pn bar when you go to different pages
                     defaults: new { controller = "Home", action = "Index", pageNum = 1});
 
-
-
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                endpoints.MapDefaultControllerRoute(); 
                 endpoints.MapRazorPages();
+                
             });
         }
     }

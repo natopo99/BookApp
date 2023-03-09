@@ -16,21 +16,21 @@ namespace BookApp.Pages
         {
             repo = temp;
         }
-        public Basket Basket { get; set; }
+        public Basket basket { get; set; }
         public string ReturnUrl { get; set; }
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            Basket = HttpContext.Session.GetJson<Basket>("Basket") ?? new Basket(); ;
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket(); ;
         }
         public IActionResult OnPost(int bookid, string returnUrl)
         {
             Book b = repo.Books.FirstOrDefault(x => x.BookID == bookid); //
 
-            Basket = HttpContext.Session.GetJson<Basket>("Basket") ?? new Basket();
-            Basket.AddItem(b, 1);
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
+            basket.AddItem(b, 1);
 
-            HttpContext.Session.SetJson("Basket", Basket);
+            HttpContext.Session.SetJson("basket", basket);
 
             return RedirectToPage(new { ReturnUrl = returnUrl});
         }
