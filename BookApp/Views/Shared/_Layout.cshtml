@@ -39,8 +39,9 @@
 
         <div class="col-9">
             <div>
-                @RenderBody() 
-                <div class="border-bottom  border-left border-right border-top p-4 border-danger align-content-center"> @*embedded a video and then added a border around it using bootstrap*@
+                @RenderBody()
+                <div class="border-bottom  border-left border-right border-top p-4 border-danger align-content-center">
+                    @*embedded a video and then added a border around it using bootstrap*@
                     <center> <iframe width="980" height="600" src="https://www.youtube.com/embed/Rvey9g0VgY0" title="YouTube video player" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
                 </div>
 
@@ -55,9 +56,9 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
+</html>
 
-
-<footer class="border-top footer text-muted font-weight-bold bg-warning"> @*added backgroung and text styles to the footer text*@
+<footer class="border-top footer text-muted font-weight-bold bg-warning"> @*added background and text styles to the footer text*@
     <center><a href="https://www.churchofjesuschrist.org/study/scriptures/the-living-christ-the-testimony-of-the-apostles/the-living-christ-the-testimony-of-the-apostles?lang=eng">Good Link </a></center>
 </footer>
-</html>
+

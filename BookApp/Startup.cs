@@ -1,6 +1,7 @@
 using BookApp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,12 +32,15 @@ namespace BookApp
 
             services.AddDistributedMemoryCache(); // this creates a session so that the cart doesnt get reset
             services.AddSession();
-            services.AddDbContext<BookstoreContext>(options =>
+            services.AddDbContext<BookstoreContext>(options => options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]));
 
-                options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]));
-            
-            
-                
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
