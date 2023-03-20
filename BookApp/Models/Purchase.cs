@@ -11,7 +11,7 @@ namespace BookApp.Models
     {
         [Key]
         [BindNever]
-        public int ItemID { get; set; }
+        public int PurchaseID { get; set; }
         [BindNever]
         public ICollection<BasketLineItem> Lines { get; set;  }
         [Required(ErrorMessage ="Please enter your name")]
@@ -25,11 +25,12 @@ namespace BookApp.Models
         [Required(ErrorMessage = "Please enter a state")]
         public string State { get; set; }
         public int Zip { get; set; }
+
         [Required(ErrorMessage = "Please enter a country")]
 
         public string Country { get; set; }
 
-
+        public bool Anonymous { get; set; }
 
 
     }

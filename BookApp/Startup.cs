@@ -28,6 +28,7 @@ namespace BookApp
         {
             services.AddControllersWithViews();
             services.AddScoped<IBookAppRepository, EFBookAppRepository>();
+            services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
             services.AddRazorPages(); // this allows us to work with razor pages
 
             services.AddDistributedMemoryCache(); // this creates a session so that the cart doesnt get reset
