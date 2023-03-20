@@ -120,7 +120,7 @@ namespace BookApp.Migrations
 
                     b.HasKey("PurchaseID");
 
-                    b.ToTable("Donations");
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("BookApp.Models.BasketLineItem", b =>

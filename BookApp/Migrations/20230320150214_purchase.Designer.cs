@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApp.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20230317044640_initial")]
-    partial class initial
+    [Migration("20230320150214_purchase")]
+    partial class purchase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,7 +122,7 @@ namespace BookApp.Migrations
 
                     b.HasKey("PurchaseID");
 
-                    b.ToTable("Donations");
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("BookApp.Models.BasketLineItem", b =>

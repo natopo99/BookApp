@@ -2,7 +2,7 @@
 
 namespace BookApp.Migrations
 {
-    public partial class initial : Migration
+    public partial class purchase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,7 @@ namespace BookApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Donations",
+                name: "Purchases",
                 columns: table => new
                 {
                     PurchaseID = table.Column<int>(nullable: false)
@@ -44,7 +44,7 @@ namespace BookApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Donations", x => x.PurchaseID);
+                    table.PrimaryKey("PK_Purchases", x => x.PurchaseID);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,9 +67,9 @@ namespace BookApp.Migrations
                         principalColumn: "BookID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BasketLineItem_Donations_PurchaseID",
+                        name: "FK_BasketLineItem_Purchases_PurchaseID",
                         column: x => x.PurchaseID,
-                        principalTable: "Donations",
+                        principalTable: "Purchases",
                         principalColumn: "PurchaseID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -94,7 +94,7 @@ namespace BookApp.Migrations
                 name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Donations");
+                name: "Purchases");
         }
     }
 }
