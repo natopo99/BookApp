@@ -14,7 +14,7 @@ namespace BookApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.22");
+                .HasAnnotation("ProductVersion", "3.1.32");
 
             modelBuilder.Entity("BookApp.Models.BasketLineItem", b =>
                 {
@@ -25,7 +25,7 @@ namespace BookApp.Migrations
                     b.Property<int?>("BookID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("PurchaseID")
+                    b.Property<int?>("PurchaseOrderID")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
@@ -35,7 +35,7 @@ namespace BookApp.Migrations
 
                     b.HasIndex("BookID");
 
-                    b.HasIndex("PurchaseID");
+                    b.HasIndex("PurchaseOrderID");
 
                     b.ToTable("BasketLineItem");
                 });
@@ -82,7 +82,7 @@ namespace BookApp.Migrations
 
             modelBuilder.Entity("BookApp.Models.Purchase", b =>
                 {
-                    b.Property<int>("PurchaseID")
+                    b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -118,7 +118,7 @@ namespace BookApp.Migrations
                     b.Property<int>("Zip")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("PurchaseID");
+                    b.HasKey("OrderID");
 
                     b.ToTable("Purchases");
                 });
@@ -131,7 +131,7 @@ namespace BookApp.Migrations
 
                     b.HasOne("BookApp.Models.Purchase", null)
                         .WithMany("Lines")
-                        .HasForeignKey("PurchaseID");
+                        .HasForeignKey("PurchaseOrderID");
                 });
 #pragma warning restore 612, 618
         }

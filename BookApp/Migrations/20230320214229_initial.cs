@@ -6,31 +6,31 @@ namespace BookApp.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Books",
-                columns: table => new
-                {
-                    BookID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(nullable: false),
-                    Author = table.Column<string>(nullable: false),
-                    Publisher = table.Column<string>(nullable: false),
-                    ISBN = table.Column<int>(nullable: false),
-                    Classification = table.Column<string>(nullable: false),
-                    Category = table.Column<string>(nullable: false),
-                    PageCount = table.Column<int>(nullable: false),
-                    Price = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Books", x => x.BookID);
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "Books",
+            //    columns: table => new
+            //    {
+            //        BookID = table.Column<int>(nullable: false)
+            //            .Annotation("Sqlite:Autoincrement", true),
+            //        Title = table.Column<string>(nullable: false),
+            //        Author = table.Column<string>(nullable: false),
+            //        Publisher = table.Column<string>(nullable: false),
+            //        ISBN = table.Column<int>(nullable: false),
+            //        Classification = table.Column<string>(nullable: false),
+            //        Category = table.Column<string>(nullable: false),
+            //        PageCount = table.Column<int>(nullable: false),
+            //        Price = table.Column<double>(nullable: false)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Books", x => x.BookID);
+            //    });
 
             migrationBuilder.CreateTable(
                 name: "Purchases",
                 columns: table => new
                 {
-                    PurchaseID = table.Column<int>(nullable: false)
+                    OrderID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false),
                     AddressLine1 = table.Column<string>(nullable: false),
@@ -44,7 +44,7 @@ namespace BookApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Purchases", x => x.PurchaseID);
+                    table.PrimaryKey("PK_Purchases", x => x.OrderID);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,7 +55,7 @@ namespace BookApp.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     BookID = table.Column<int>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
-                    OrderID = table.Column<int>(nullable: true)
+                    PurchaseOrderID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,10 +67,10 @@ namespace BookApp.Migrations
                         principalColumn: "BookID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BasketLineItem_Purchases_PurchaseID",
-                        column: x => x.OrderID,
+                        name: "FK_BasketLineItem_Purchases_PurchaseOrderID",
+                        column: x => x.PurchaseOrderID,
                         principalTable: "Purchases",
-                        principalColumn: "PurchaseID",
+                        principalColumn: "OrderID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -80,9 +80,9 @@ namespace BookApp.Migrations
                 column: "BookID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BasketLineItem_PurchaseID",
+                name: "IX_BasketLineItem_PurchaseOrderID",
                 table: "BasketLineItem",
-                column: "PurchaseID");
+                column: "PurchaseOrderID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
