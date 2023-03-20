@@ -55,7 +55,7 @@ namespace BookApp.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     BookID = table.Column<int>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
-                    PurchaseID = table.Column<int>(nullable: true)
+                    OrderID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,7 +68,7 @@ namespace BookApp.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BasketLineItem_Purchases_PurchaseID",
-                        column: x => x.PurchaseID,
+                        column: x => x.OrderID,
                         principalTable: "Purchases",
                         principalColumn: "PurchaseID",
                         onDelete: ReferentialAction.Restrict);

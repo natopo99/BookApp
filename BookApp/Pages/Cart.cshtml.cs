@@ -32,9 +32,9 @@ namespace BookApp.Pages
             return RedirectToPage(new { ReturnUrl = returnUrl});
         }
 
-        public IActionResult OnPostRemove(int bkID, string returnURL)
+        public IActionResult OnPostRemove(int bookId, string returnURL)
         {
-            basket.RemoveItem(basket.Items.First(x => x.Book.BookID == bkID).Book);
+            basket.RemoveItem(basket.Items.First(x => x.Book.BookID == bookId).Book);
 
             return RedirectToPage( new {ReturnUrl = returnURL});
         }

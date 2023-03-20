@@ -11,7 +11,7 @@ namespace BookApp.Models
     {
         [Key]
         [BindNever]
-        public int PurchaseID { get; set; }
+        public int OrderID { get; set; }
         [BindNever]
         public ICollection<BasketLineItem> Lines { get; set;  }
         [Required(ErrorMessage ="Please enter your name")]

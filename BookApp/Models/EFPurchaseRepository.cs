@@ -22,7 +22,7 @@ namespace BookApp.Models
         public void SavePurchase(Purchase purchase)
         {
             context.AttachRange(purchase.Lines.Select(x => x.Book));
-            if (purchase.PurchaseID == 0)
+            if (purchase.OrderID == 0)
             {
                 context.Purchases.Add(purchase);
             }

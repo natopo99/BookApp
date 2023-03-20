@@ -15,7 +15,7 @@ namespace BookApp.Models
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
-            SessionBasket basket = session?.GetJson<SessionBasket>("basket") ?? new SessionBasket();
+            SessionBasket basket = session?.GetJson<SessionBasket>("Basket") ?? new SessionBasket();
             basket.Session = session;
             return basket;
         }
@@ -25,20 +25,20 @@ namespace BookApp.Models
         public override void AddItem(Book Bk, int qty)
         {
             base.AddItem(Bk, qty);
-            Session.SetJson("basket", this);
+            Session.SetJson("Basket", this);
             
         }
 
         public override void RemoveItem(Book bk)
         {
             base.RemoveItem(bk);
-            Session.SetJson("basket", this);
+            Session.SetJson("Basket", this);
         }
 
         public override void ClearBasket()
         {
             base.ClearBasket();
-            Session.Remove("basket");
+            Session.Remove("Basket");
         }
 
     }
