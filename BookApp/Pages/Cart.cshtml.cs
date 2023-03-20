@@ -29,7 +29,6 @@ namespace BookApp.Pages
 
             basket.AddItem(b, 1);
 
-
             return RedirectToPage(new { ReturnUrl = returnUrl});
         }
 

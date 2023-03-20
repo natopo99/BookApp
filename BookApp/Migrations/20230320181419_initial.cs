@@ -2,7 +2,7 @@
 
 namespace BookApp.Migrations
 {
-    public partial class purchase : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
