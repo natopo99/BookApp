@@ -11,7 +11,7 @@ namespace BookApp.Controllers
     {
         private IPurchaseRepository repo { get; set; }
         private Basket basket { get; set; }
-        public PurchaseController(IPurchaseRepository temp, Basket b)
+        public PurchaseController(IPurchaseRepository temp, Basket b) /*Build Constsructor*/
         {
             repo = temp;
             basket = b;
@@ -26,15 +26,15 @@ namespace BookApp.Controllers
         {
             if (basket.Items.Count() == 0)
             {
-                ModelState.AddModelError("", "Sorry your basket is empty!");
+                ModelState.AddModelError("", "Sorry your basket is empty!"); /*Make sure they actually have items to checkout*/
             }
             if (ModelState.IsValid)
             {
                 purchase.Lines = basket.Items.ToArray();
                 repo.SavePurchase(purchase);
-                basket.ClearBasket();
+                basket.ClearBasket(); /*Once they have checked out clear all data from basket to reset cart*/
 
-                return RedirectToPage("/PurchaseCompleted");
+                return RedirectToPage("/PurchaseCompleted"); /*Take them to intermediate page that will provide a link to return home*/
             }
             else
             {

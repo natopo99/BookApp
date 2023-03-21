@@ -6,13 +6,17 @@
     <title>@ViewData["Title"] - BookApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+
     <header>
         @*adding bootstrap styles to the layout page*@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand m-lg-2" asp-area="" asp-controller="Home" asp-action="Index">BookApp</a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,7 +28,11 @@
                         </li>
 
                     </ul>
+
                 </div>
+            </div>
+            <div class="col-6 text-right">
+                <vc:cart-summary /> @*This is the shopping cart summary*@
             </div>
         </nav>
     </header>

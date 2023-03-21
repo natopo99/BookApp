@@ -26,8 +26,8 @@ namespace BookApp.Models
         public string State { get; set; }
         public int Zip { get; set; }
 
-        [Required(ErrorMessage = "Please enter a country")]
-
+        [Required(ErrorMessage = "Please enter a country")] /*send error message if they dont meet the constraints*/
+        
         public string Country { get; set; }
 
         public bool Anonymous { get; set; }
